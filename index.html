@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" />
+	<title>小李子</title>
+	<link rel="stylesheet" href="css/jquery.fullPage.css" />
+	<link rel="stylesheet" href="css/animate.css" />
+	<link rel="stylesheet" href="css/style.css" />
+	<script src="js/jq.js"></script>
+	<script src="js/jquery.fullPage.js"></script>	
+</head>
+
+<body>
+	<div id="fullpage">
+	    <div class="section page1">
+	    	<div class="container">
+	    		<div class="clearfix">
+	    			<div class="left person-show">
+		    			<div class="roll zoomIn"></div>
+			            <div class="people"></div>
+			            <div class="cellphone"></div>
+			            <div class="hand"></div>
+		    		</div>
+		    		<div class="right">
+		    			<p class="title-img">
+		    				<img src="img/logo.png" alt="" />
+		    			</p>
+		    			<div class="qrcode">
+		    				<img src="img/timg.jpg" alt="" width=300/>
+		    			</div>
+		    		</div>
+	    		</div>
+	    	</div>
+	    </div>
+	    <div class="section page2">
+	    	<div class="container clearfix">
+	    		<div class="left txt">
+	    			<h2>放假啦啦！！！</h2>
+		            <h3>估分选大学+查学校+查专业</h3>
+		            <p>来源于官方机构和高校的数百万<br>条权威高考数据</p>
+	    		</div>
+	    		<div class="right img">
+	    			<img src="img/page2-img.png" alt=""/>
+	    		</div>
+	    	</div>
+	    </div>
+	    <div class="section page3">
+	    	<div class="container">
+	    		<div class="info">
+	                <h4>志愿填报</h4>
+	                <h5>一起找个靠谱的</h5>
+	                <div class="grid QRcode_bottom clearfix">
+	                    <div class="left">
+	                        <img src="img/page5-img.png" alt="">
+	                    </div>
+	                    <div class="right">
+	                        <img src="img/timg.jpg" alt="" width=300>
+	                        
+	                    </div>
+	                </div>
+	                
+	            </div>
+	    	</div>
+	    </div>
+	</div>
+	
+	
+	
+<script>
+	$(function(){
+		setTimeout(function(){$('.person-show .cellphone').addClass('circle')},1000);
+		setTimeout(function(){$('.person-show .people').addClass('show')},1800);
+		setTimeout(function(){$('.person-show .hand').animate({'bottom':0,'opacity':1},1000)},1800);
+		setTimeout(function(){$('.page1 .right').animate({'opacity':1},1500)},2000);
+		setTimeout(function(){$('.title-img').addClass('title-img-hover')},2500);
+		
+		$('#fullpage').fullpage({
+			'navigation': true,
+			afterLoad:function(anchorLink,index){
+				console.log(anchorLink+'___'+index);
+				if(index == '2'){
+                    $('.page2 .txt').addClass("fadeInLeft");
+                    $('.page2 .img').addClass("fadeInRight");
+                }
+				if(index == '3'){
+                    $('.page3 .info').addClass("zoomIn");
+                }
+			},
+			onLeave:function(index,direction){
+				console.log(index+'___'+direction);
+				if(index == '2'){
+					$('.page2 .txt').removeClass("fadeInLeft");
+                    $('.page2 .img').removeClass("fadeInRight");
+				}
+				if(index == '3'){
+                    $('.page3 .info').removeClass("zoomIn");
+                }
+			}
+		});
+		
+		
+	})
+</script>	
+	
+</body>
+</html>
